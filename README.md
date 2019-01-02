@@ -7,8 +7,8 @@ EUR, GBP, GHC, GHS, MUR, NGN, USD, XAF, XOF
 
 
 # Test
-$obj = new NumberToWords();
+_$obj = new NumberToWords();_
 
-echo $obj->convert(3490948028.56, "NGN");
+_echo $obj->convert(3490948028.56, "NGN");_
 
-Displays _*Three Billion, Four Hundred and Ninety Million, Nine Hundred and Forty-Eight Thousand, and Twenty-Eight Naira, Fifty-Six Kobo*_
+Displays **Three Billion, Four Hundred and Ninety Million, Nine Hundred and Forty-Eight Thousand, and Twenty-Eight Naira, Fifty-Six Kobo**
