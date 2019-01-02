@@ -4,18 +4,71 @@
  * @date 19th Dec., 2018
  */
 
+
 class NumberToWords{
     protected function getCurrencyCodeUnit($currency_code=''):array{
         $supported_currencies = [
-			      'EUR'=>['main'=>'Euro', 'fraction'=>"Cent"],
-            'GBP'=>['main'=>'Pound', 'fraction'=>"Penny"],
-            'GHC'=>['main'=>"Ghana Cedi", 'fraction'=>'Pesewa'],
-            'GHS'=>['main'=>"Ghana Cedi", 'fraction'=>'Pesewa'],
-            'MUR'=>['main'=>'Rupee', 'fraction'=>"Cent"],
-            'NGN'=>['main'=>"Naira", 'fraction'=>'Kobo'],
-            'USD'=>['main'=>"US Dollar", 'fraction'=>"Cent"],
-            'XAF'=>['main'=>'Franc', 'fraction'=>"Centime"],
-            'XOF'=>['main'=>'Franc', 'fraction'=>"Centime"]
+		'AED'=>['main'=>'United Arab Emirates dirham', 'fraction'=>'Fils'],
+		'AFN'=>['main'=>'Afghan afghani', 'fraction'=>'Pul'],
+		'ANG'=>['main'=>'Netherlands Antillean guilder', 'fraction'=>'Cent'],
+		'ARS'=>['main'=>'Argentine peso', 'fraction'=>'Centavo'],
+		'AUD'=>['main'=>'Australian dollar', 'fraction'=>'Cent'],
+		'BRL'=>['main'=>'real', 'fraction'=>'Centavo'],
+		'CAD'=>['main'=>'Canadian dollar', 'fraction'=>'Cent'],
+		'CHF'=>['main'=>'Swiss franc', 'fraction'=>'Rappen'],
+		'CNY'=>['main'=>'yuan', 'fraction'=>'Fen'],
+		'DKK'=>['main'=>'Danish krone', 'fraction'=>'Øre'],
+		'DZD'=>['main'=>'Algerian dinar', 'fraction'=>'Santeem'],
+		'EGP'=>['main'=>'Egyptian pound', 'fraction'=>'Piastre'],
+		'EUR'=>['main'=>'Euro', 'fraction'=>"Cent"],
+		'GBP'=>['main'=>'Pound', 'fraction'=>"Penny"],
+		'GHC'=>['main'=>"Ghana Cedi", 'fraction'=>'Pesewa'],
+		'GHS'=>['main'=>"Ghana Cedi", 'fraction'=>'Pesewa'],
+		'HKD'=>['main'=>'Hong Kong dollar', 'fraction'=>'Cent'],
+		'ILS'=>['main'=>'Israeli new shekel', 'fraction'=>'Agora'],
+		'INR'=>['main'=>'Indian rupee', 'fraction'=>'Paisa'],
+		'IQD'=>['main'=>'Iraqi dinar', 'fraction'=>'Fils'],
+		'IRR'=>['main'=>'Iranian rial', 'fraction'=>'Dinar'],
+		'JMD'=>['main'=>'Jamaican dollar', 'fraction'=>'Cent'],
+		'JOD'=>['main'=>'Jordanian dinar', 'fraction'=>'Piastre'],
+		'JPY'=>['main'=>'Japanese yen', 'fraction'=>'Sen'],
+		'KES'=>['main'=>'Kenyan shilling', 'fraction'=>'Cent'],
+		'KPW'=>['main'=>'North Korean won', 'fraction'=>'Chon'],
+		'KRW'=>['main'=>'South Korean won', 'fraction'=>'Jeon'],
+		'KWD'=>['main'=>'Kuwaiti dinar', 'fraction'=>'Fils'],
+		'LYD'=>['main'=>'Libyan dinar', 'fraction'=>'Dirham'],
+		'MXN'=>['main'=>'Mexican peso', 'fraction'=>'Centavo'],
+		'MAD'=>['main'=>'Moroccan dirham', 'fraction'=>'Centime'],
+            	'MUR'=>['main'=>'Rupee', 'fraction'=>"Cent"],
+            	'NGN'=>['main'=>"Naira", 'fraction'=>'Kobo'],
+		'NZD'=>['main'=>'New Zealand dollar', 'fraction'=>'Cent'],
+		'PEN'=>['main'=>'Peruvian sol', 'fraction'=>'Céntimo'],
+		'PHP'=>['main'=>'Philippine peso', 'fraction'=>'Sentimo'],
+		'PYG'=>['main'=>'Paraguayan guaraní', 'fraction'=>'Céntimo'],
+		'QAR'=>['main'=>'Qatari riyal', 'fraction'=>'Dirham'],
+		'RON'=>['main'=>'Romanian leu', 'fraction'=>'Ban'],
+		'RSD'=>['main'=>'Serbian dinar', 'fraction'=>'Para'],
+		'RUB'=>['main'=>'Russian ruble', 'fraction'=>'Kopek'],
+		'RWF'=>['main'=>'Rwandan franc', 'fraction'=>'Centime'],
+		'SAR'=>['main'=>'Saudi riyal', 'fraction'=>'Halala'],
+		'SDG'=>['main'=>'Sudanese pound', 'fraction'=>'Piastre'],
+		'SEK'=>['main'=>'Swedish krona', 'fraction'=>'Öre'],
+		'SGD'=>['main'=>'Singapore dollar', 'fraction'=>'Cent'],
+		'SHP'=>['main'=>'Saint Helena pound', 'fraction'=>'Penny'],
+		'SYP'=>['main'=>'Syrian pound', 'fraction'=>'Piastre'],
+		'THB'=>['main'=>'Thai baht', 'fraction'=>'Satang'],
+		'TND'=>['main'=>'Tunisian dinar', 'fraction'=>'Millime'],
+		'TRY'=>['main'=>'Turkish lira', 'fraction'=>'Kuruş'],
+		'TWD'=>['main'=>'New Taiwan dollar', 'fraction'=>'Cent'],
+		'UGX'=>['main'=>'Ugandan shilling', 'fraction'=>'Cent'],
+            	'USD'=>['main'=>"US Dollar", 'fraction'=>"Cent"],
+		'VES'=>['main'=>'Venezuelan bolívar soberano', 'fraction'=>'Céntimo'],
+            	'XAF'=>['main'=>'Central African CFA franc', 'fraction'=>"Centime"],
+		'XCD'=>['main'=>'Eastern Caribbean dollar', 'fraction'=>'Cent'],
+            	'XOF'=>['main'=>'West African CFA franc', 'fraction'=>"Centime"],
+		'XPF'=>['main'=>'CFP franc', 'fraction'=>'Centime'],
+		'YER'=>['main'=>'Yemeni rial', 'fraction'=>'Fils'],
+		'ZAR'=>['main'=>'South African rand', 'fraction'=>'Cent']
         ];
 
 
@@ -30,7 +83,7 @@ class NumberToWords{
     ********************************************************************************************************************************
     */
 
-    protected function xml(){
+    protected function xm(){
         return [
             'x'=>[
                 "0"=>"", "00"=>"",
@@ -129,7 +182,7 @@ class NumberToWords{
     */
     
     private function handleXDigits($digits){//1-19
-        return $this->xml()['x'][$digits];
+        return $this->xm()['x'][$digits];
     }
 
     /*
@@ -149,8 +202,8 @@ class NumberToWords{
             $first_digit = substr($digits, 0, 1);
             $second_digit = substr($digits, 1, 1);
 
-            $first_digit_word = $first_digit != '0' ? $this->xml()['m'][$first_digit] : "";
-            $second_digit_word = $second_digit == '0' ? "" : $this->xml()['x'][$second_digit];
+            $first_digit_word = $first_digit != '0' ? $this->xm()['m'][$first_digit] : "";
+            $second_digit_word = $second_digit == '0' ? "" : $this->xm()['x'][$second_digit];
 
             return trim($first_digit_word) && trim($second_digit_word) ? $first_digit_word."-".$second_digit_word : $first_digit_word." ".$second_digit_word;
         }
